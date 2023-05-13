@@ -2,7 +2,7 @@
 
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
@@ -52,6 +52,11 @@ const LoginModal = () => {
 			}
 		});
 	};
+
+	const toggle = useCallback(() => {
+		loginModal.onClose();
+		registerModal.onOpen();
+	}, [loginModal, registerModal]);
 
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
@@ -103,16 +108,16 @@ const LoginModal = () => {
 			"
 			>
 				<div className="justify-center flex flex-row items-center gap-4">
-					<div>Already have an account?</div>
+					<div>Don't have an account yet?</div>
 					<div
-						onClick={registerModal.onClose}
+						onClick={toggle}
 						className="
 				text-neutral-800 
 				cursor-pointer 
 				hover:underline
 				"
 					>
-						Log in
+						Register
 					</div>
 				</div>
 			</div>
