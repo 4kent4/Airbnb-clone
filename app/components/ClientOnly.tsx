@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Children } from "react";
+import { useState, useEffect } from "react";
 
 interface ClientOnlyProps {
 	children: React.ReactNode;
@@ -17,7 +17,7 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
 		return null;
 	}
 
-	return <>{Children}</>;
+	return <>{children}</>;
 };
 
 export default ClientOnly;
